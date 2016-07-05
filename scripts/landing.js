@@ -11,9 +11,6 @@ var animatePoints = function() {
 
 
   forEach(pointsArray, revealPoints);
-  // for (var i = 0; i < pointsArray.length; i++) {
-  //   revealPoints(i);
-  // };
 };
 
 window.onload = function() {
