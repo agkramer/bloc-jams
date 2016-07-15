@@ -47,13 +47,13 @@ var albumArray = [albumRunDMC, albumMarconi, albumPicasso];
 
 
 var createSongRow = function(songNumber, songName, songLength) {
-     var template =
-        '<tr class="album-view-song-item">'
-      + '  <td class="song-item-number" data-song-number="' + songNumber + '">' + songNumber + '</td>'
-      + '  <td class="song-item-title">' + songName + '</td>'
-      + '  <td class="song-item-duration">' + songLength + '</td>'
-      + '</tr>'
-      ;
+    var template =
+      '<tr class="album-view-song-item">'
+    + '  <td class="song-item-number" data-song-number="' + songNumber + '">' + songNumber + '</td>'
+    + '  <td class="song-item-title">' + songName + '</td>'
+    + '  <td class="song-item-duration">' + songLength + '</td>'
+    + '</tr>'
+    ;
 
     var $row =  $(template);
 
@@ -98,13 +98,13 @@ var createSongRow = function(songNumber, songName, songLength) {
 
 var setCurrentAlbum = function(album) {
     var $albumTitle = $('.album-view-title');
-    var $albumArtist = $('album-view-artist');
-    var $albumReleaseInfo = $('album-view-release-info');
-    var $albumImage = $('album-cover-art');
-    var $albumSongList = $('album-view-song-list');
+    var $albumArtist = $('.album-view-artist');
+    var $albumReleaseInfo = $('.album-view-release-info');
+    var $albumImage = $('.album-cover-art');
+    var $albumSongList = $('.album-view-song-list');
 
     $albumTitle.text(album.title);
-    $albumArtist.text(album.text);
+    $albumArtist.text(album.artist);
     $albumReleaseInfo.text(album.year + ' ' + album.label);
     $albumImage.attr('src', album.albumArtUrl);
 
