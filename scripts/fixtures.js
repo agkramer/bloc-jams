@@ -28,6 +28,19 @@ var albumMarconi = {
     ]
 };
 
-
+var albumRunDMC = {
+    title: 'Run-D.M.C.',
+    artist: 'Run-D.M.C.',
+    label: 'Arista Records',
+    year: '1984',
+    albumArtUrl: 'assets/images/album_covers/run-dmc.jpeg',
+    songs: [
+        { title: 'Hard Times', duration: '3:54' },
+        { title: 'Rock Box', duration: '5:31' },
+        { title: 'Jam Master Jay', duration: '3:11'},
+        { title: 'Hollis Crew', duration: '3:15' },
+        { title: 'Sucker M.C.\'s', duration: '3:09'}
+    ]
+};
 
 var albumArray = [albumRunDMC, albumMarconi, albumPicasso];
