@@ -16,8 +16,7 @@ var createSongRow = function(songNumber, songName, songLength) {
         if (currentlyPlayingSongNumber !== null) {
             // Revert to song number for currently playing song because user started playing new song.
             var currentlyPlayingCell = getSongNumberCell(currentlyPlayingSongNumber);
-
-            currentlyPlayingCell = getSongNumberCell(currentlyPlayingSongNumber);
+            // currentlyPlayingCell = getSongNumberCell(currentlyPlayingSongNumber);
             currentlyPlayingCell.html(currentlyPlayingSongNumber);
         }
 
@@ -179,6 +178,46 @@ var setVolume = function(volume) {
     }
 };
 
+var togglePlayFromPlayerBar = function() {
+    if (currentSoundFile === null) {
+        return true;
+    }
+
+    if (currentSoundFile.isPaused()) {
+        var songNumberCell = $(this).find('.song-item-number');
+        var songNumber = parseInt(songNumberCell.attr('data-song-number'));
+        getSongNumberCell(songNumber);
+        var currentlyPlayingCell = getSongNumberCell(currentlyPlayingSongNumber);
+
+        currentlyPlayingCell.html(pauseButtonTemplate);
+        $('.main-controls .play-pause').html(playerBarPauseButton);
+        currentSoundFile.play();
+    } else {
+        var songNumberCell = $(this).find('.song-item-number');
+        var songNumber = parseInt(songNumberCell.attr('data-song-number'));
+        getSongNumberCell(songNumber);
+        var currentlyPlayingCell = getSongNumberCell(currentlyPlayingSongNumber);
+        
+        currentlyPlayingCell.html(playButtonTemplate);
+        $('.main-controls .play-pause').html(playerBarPlayButton);
+        currentSoundFile.pause();
+    }
+};
+
+/*
+function should:
+
+If a song is paused and the play button is clicked in the player bar, it will
+Change the song number cell from a play button to a pause button
+Change the HTML of the player bar's play button to a pause button
+Play the song
+If the song is playing (so a current sound file exist), and the pause button is clicked
+Change the song number cell from a pause button to a play button
+Change the HTML of the player bar's pause button to a play button
+Pause the song
+
+*/
+
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
 var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause"></span></a>';
 var playerBarPlayButton = '<span class="ion-play"></span>';
@@ -192,10 +231,12 @@ var currentVolume = 80;
 
 var $previousButton = $('.main-controls .previous');
 var $nextButton = $('.main-controls .next');
+var $playPauseButton = $('.main-controls .play-pause');
 
 $(document).ready(function() {
     setCurrentAlbum(albumPicasso);
 
     $previousButton.click(previousSong);
     $nextButton.click(nextSong);
+    $playPauseButton.click(togglePlayFromPlayerBar);
 });
