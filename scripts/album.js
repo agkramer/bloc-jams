@@ -265,7 +265,12 @@ var filterTimeCode = function(timeInSeconds) {
     var minutes = Math.floor(timeInSeconds / 60);
     var seconds = Math.floor(timeInSeconds % 60);
 
-    return minutes + ":" + seconds;
+
+    if (seconds < 10) {
+        return minutes + ":0" + seconds;
+    } else {
+        return minutes + ":" + seconds;
+    }
 };
 
 var seek = function(time) {
